@@ -4,19 +4,30 @@ import { useState } from 'react'
 const UploadForm = () => {
 
 	const [file, setFile] = useState(null)
+	const [error, setError] = useState(null)
+
+	const types = ['image/png', 'image/jpeg']
 
 	const changeHandler = (e) => {
 		let selected = e.target.files[0]
 
-		if (selected) {
+		if (selected && types.includes(selected.type)) {
 			setFile(selected);
-			// 18:48
+			setError('')
+		} else {
+			setFile(null)
+			setError('Please use png or jpeg file')
+			// 25 15
 		}
 	}
 
 	return (
 		<form>
 			<input type = 'file' onChange = {changeHandler}/>
+			<div className = "output">
+				{error && <div className = "error">{error}</div>}
+				{file && <div>{file.name}</div>}
+			</div>
 		</form>
 	)
 }
