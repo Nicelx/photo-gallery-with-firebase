@@ -1,6 +1,7 @@
 import firebase from 'firebase/app'
 import 'firebase/storage';
 import 'firebase/firestore'
+// import 'firebase/database'
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
@@ -14,6 +15,11 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
+// const db = firebase.database().ref().child('charts')
+// console.log(db)
+// db.on('value', snap => console.log(snap.val()))
+// db.update({'5': 10})
 
 const projectStorage = firebase.storage()
 const projectFirestore = firebase.firestore();
